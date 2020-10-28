@@ -36,3 +36,7 @@ footer {
 header {
   margin: 100px auto 10px;
 }
+
+.round-title {
+  margin-bottom: 5px;
+}
