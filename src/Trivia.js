@@ -13,7 +13,8 @@ class Trivia extends Component {
         currentQuestion: [],
         currentSelection: '',
         displayCorrect: false,
-        displayScore: false
+        displayScore: false,
+        displayWin: false
     }
 
 
@@ -35,13 +36,17 @@ class Trivia extends Component {
             remainingQuestions = this.state.data
         }
         this.setState({ remainingQuestions: remainingQuestions })
-        if (this.state.roundCount <= 10 ) {
-            // const currentQuestion = remainingQuestions[Math.floor(Math.random() * remainingQuestions.length)]
+        if (this.state.roundCount < 10 ) {
+            const currentQuestion = remainingQuestions[Math.floor(Math.random() * remainingQuestions.length)]
             await this.setState({
-                currentQuestion: remainingQuestions[Math.floor(Math.random() * remainingQuestions.length)]
+                currentQuestion: currentQuestion
             })
             this.setState({ clicked: true })
-
+        } else {
+            this.setState({
+                displayScore: true,
+                displayWin: true
+            })
         }
     }
 
@@ -78,7 +83,7 @@ class Trivia extends Component {
                             <h1>Ready to Improve your Trivia Skills?</h1>
                             <Button variant='contained' color='primary' onClick={this.rounds}>Get Started!</Button> </>
                     }
-                    {this.state.displayCorrect && this.state.roundCount > 0 && this.state.roundCount <= 10 &&
+                    {this.state.displayCorrect && this.state.roundCount > 0 && this.state.roundCount < 10 &&
                         <>
                             <p>{this.state.currentQuestion.correct} was the correct answer</p>
                             <Button variant='contained' onClick={() => { this.setState({ displayScore: !this.state.displayScore }) }}>See My Score</Button> <Button style={{ marginTop: '20px' }} variant='contained' onClick={() => { this.rounds() }}>Next Question</Button>
@@ -92,6 +97,8 @@ class Trivia extends Component {
 
                 <main className="main">
                     {this.state.clicked && <>
+
+                    <h2 className="round-title">Round {this.state.roundCount +1}</h2>
                         <h3>{this.state.currentQuestion.question}</h3>
                         <form>
                             <select id='currentSelection' onChange={this.handleChange}>
