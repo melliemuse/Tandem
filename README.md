@@ -1,13 +1,13 @@
 # Tandem Trivia
 
-# Installation Instructions
-Copy ssh key
-> Run git clone {ssh key} in your terminal
-> cd into root project directory
-> npm i
-wait for dependencies to be installed
+## Steps to Install this App
 
-# To Run
-> npm start
+1. Clone this repo onto your computer
+- `git@github.com:melliemuse/Tandem.git`
 
+2. Install the NPM dependencies for this project using the following commands
+ `cd Tandem`
+ `npm install`
 
+3. Start Server
+ `npm start `
