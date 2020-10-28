@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Trivia from './Trivia';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './theme'
 
 ReactDOM.render(
-    <Trivia />,
+  <ThemeProvider theme={theme}>
+    <Trivia />
+  </ThemeProvider>,
   document.getElementById('root')
 );
 
